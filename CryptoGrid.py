@@ -2,6 +2,9 @@
 
 
 class CryptoGrid:
+    #extra characters, fixed order.
+    chars = [ "''", '(', ')', '*', '+', ',', '-', '.', '/'
+    , ':', ';', '<', '>', '[', ']', '^', '?']
 
     grid = []
     listsize = 9
