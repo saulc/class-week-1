@@ -1,6 +1,6 @@
 # Simple Encryption
 
-def input():
+def getInput():
     # Get input
     key = input("Enter key: ")
 
@@ -13,3 +13,7 @@ def input():
             order += 1
 
     print(key_dict.keys())
+
+
+if __name__ == "__main__":
+    getInput()
