@@ -8,10 +8,16 @@ class CryptoGrid:
     upper = string.ascii_uppercase
     lower = string.ascii_lowercase
     grid_size = 9
+    mkey = []
+    grid = []
 
-    def __init__(self):
-        self.mkey = self.get_input()
-        self.grid = self.createGrid()
+
+    def __init__(self, key, message):
+        test = 'encode "' + key + '" "' + message + '"'
+        self.splitInput(test)
+        dat  = self.createGrid()
+        for i in dat:
+           self.grid.append(dat)
 
 
     def createGrid(self):
@@ -26,6 +32,9 @@ class CryptoGrid:
 
     def get_input(self):
         raw_input = input("Enter key: ")
+        self.splitInput(raw_input)
+
+    def splitInput(self, raw_input):
         split_input_list = raw_input.split('"')
         action = split_input_list[0]
         code_word = split_input_list[1]
@@ -51,15 +60,6 @@ class CryptoGrid:
             key_list.append(key)
         return key_list
 
-    def __init__(self, key, message):
-        self.createGrid(key, message)
-
-    def createGrid(self, key, message):
-        self.grid = []
-        self.mkey = key
-        for i in range(0, self.listsize*self.listsize):
-            self.grid.append(str(i))
-
     def encode(self, message):
         pass
 
@@ -71,14 +71,19 @@ class CryptoGrid:
         for i in self.grid:
             prt += i + " "
             k += 1
-            end = ( ( k % self.listsize) == 0 )
+            end = ( ( k % self.grid_size) == 0 )
             if( end ):
                 print(prt)
                 prt = ""
 
 def testGrid():
-    msg = "hello"
-    key = "test key"
+    key = "Cryptography Is Fun."
+    msg = "Computers Are Fun?"
+    output = "rg3FJuYgFIIaX.unB ["
+
+    # self.mkey = self.get_input()
+    # self.grid = self.createGrid()
+
     gd = CryptoGrid(key, msg)
     gd.printGrid()
 
